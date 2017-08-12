@@ -15,13 +15,17 @@ class Transliterator extends Component {
   }
 
   get result() {
-    return translate(this.state.value, Object.keys(this.props.alphabet), this.props.alphabet);
+    return translate(
+      this.props.source,
+      Object.keys(this.props.alphabet),
+      this.props.alphabet
+    );
   }
 
   render() {
+    //         <textarea value={this.state.value} onChange={this.handleChange} />
     return (
       <div className={styles.root}>
-        <textarea value={this.state.value} onChange={this.handleChange} />
         <div>
           {this.result}
         </div>
@@ -31,11 +35,13 @@ class Transliterator extends Component {
 }
 
 Transliterator.propTypes = {
+  source: PropTypes.string,
   alphabet: PropTypes.object,
-  targetLetter: PropTypes.oneOf([ PropTypes.object, PropTypes.string ])
+  targetLetter: PropTypes.oneOf([PropTypes.object, PropTypes.string])
 };
 
 Transliterator.defaultProps = {
+  source: "",
   alphabet: {}
 };
 
