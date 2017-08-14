@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import Transliterator from "./components/Transliterator";
 import AlphabetPicker from "./components/AlphabetPicker";
 import TextChunks from "./components/TextChunks";
 import greek from "./data/alphabet/greek.json";
@@ -31,7 +30,7 @@ class App extends Component {
   }
 
   renderInput() {
-    return <input onChange={this.handleChange} />;
+    return <input placeholder={"text"} onChange={this.handleChange} />;
   }
 
   handleChange = this.handleChange.bind(this);
@@ -75,7 +74,11 @@ class App extends Component {
   }
 
   renderCustomAlphabet() {
-    return <input onChange={this.handleCustomAlphabetChange} />;
+    return (
+      <div>
+        <input placeholder={"alphabet as json"} onChange={this.handleCustomAlphabetChange} />
+      </div>
+    );
   }
 
   render() {
